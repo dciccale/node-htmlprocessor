@@ -46,10 +46,10 @@ Allow recursive processing
 $ htmlprocessor file-to-process.html -o processed/file.html -r
 ```
 
-Change the comment marker
+Change the comment marker to `<!-- process --><!-- /process -->`
 
 ```bash
-$ htmlprocessor file-to-process.html -o processed/file.html -r
+$ htmlprocessor file-to-process.html -o processed/file.html --comment-marker process
 ```
 
 ## License
