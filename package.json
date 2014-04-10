@@ -20,6 +20,9 @@
       "url": "https://github.com/dciccale/node-htmlprocessor/blob/master/LICENSE-MIT"
     }
   ],
+  "scripts": {
+    "test": "node test/run.js"
+  },
   "main": "./lib/htmlprocessor",
   "bin": {
     "htmlprocessor": "./cli.js"
