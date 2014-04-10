@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 var path = require('path');
-var fs = require('fs');
+var index = require('./index');
 var pkg = require('./package.json');
-var utils = require('./lib/utils');
-var HTMLProcessor = require('./lib/htmlprocessor');
 var args = process.argv.slice(2);
 var options = {};
+var files = [];
+var output;
 
 while (args.length > 0) {
   var v = args.shift();
@@ -43,56 +43,18 @@ while (args.length > 0) {
       break;
     case '-o':
     case '--output':
-      options.output = args.shift();
+      output = args.shift();
       break;
     case '-h':
     case '--help':
       console.log('show help');
       break;
     default:
-      if (!options.files) {
-        options.files = [];
-      }
       if (v && v.indexOf('-') === 0) {
         throw ('Unknown option: ' + v);
       }
-      options.files.push(v);
+      files.push(v);
   }
 }
 
-var html = new HTMLProcessor(options);
-
-if (options.output) {
-  if (path.extname(options.output)) {
-    utils.mkdir(path.dirname(options.output));
-  } else {
-    utils.mkdir(options.output);
-  }
-}
-
-var getOutputPath = function (filepath) {
-  var dest = options.output;
-  var ext;
-
-  if (!dest) {
-    ext = path.extname(filepath);
-    dest = path.basename(filepath, ext) + '.processed' + ext;
-  } else if (!path.extname(dest)) {
-    dest = path.join(dest, filepath);
-  }
-
-  return dest;
-};
-
-options.files.forEach(function (filepath) {
-  var content = html.process(filepath);
-  var dest = getOutputPath(filepath);
-
-  fs.writeFile(dest, content, function (err) {
-    if (err) {
-      throw err;
-    }
-
-    console.log('File', '"' + dest + '"', 'created.');
-  });
-});
+index({src: files, dest: output}, options);
