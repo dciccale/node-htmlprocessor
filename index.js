@@ -1,3 +1,14 @@
+/*
+ * node-htmlprocessor
+ * https://github.com/dciccale/node-htmlprocessor
+ *
+ * Copyright (c) 2013-2014 Denis Ciccale (@tdecs)
+ * Licensed under the MIT license.
+ * https://github.com/dciccale/node-htmlprocessor/blob/master/LICENSE-MIT
+ */
+
+'use strict';
+
 var path = require('path');
 var fs = require('fs');
 var HTMLProcessor = require('./lib/htmlprocessor');

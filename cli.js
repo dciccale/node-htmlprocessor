@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 
+/*
+ * node-htmlprocessor
+ * https://github.com/dciccale/node-htmlprocessor
+ *
+ * Copyright (c) 2013-2014 Denis Ciccale (@tdecs)
+ * Licensed under the MIT license.
+ * https://github.com/dciccale/node-htmlprocessor/blob/master/LICENSE-MIT
+ */
+
 var path = require('path');
 var index = require('./index');
 var pkg = require('./package.json');
