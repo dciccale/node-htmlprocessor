@@ -1,4 +1,4 @@
-# htmlprocessor
+# htmlprocessor [![Build Status](https://travis-ci.org/dciccale/node-htmlprocessor.svg?branch=master)](https://travis-ci.org/dciccale/node-htmlprocessor) [![NPM version](https://badge.fury.io/js/htmlprocessor.png)](http://badge.fury.io/js/htmlprocessor)
 
 `npm install -g htmlprocessor`
 
