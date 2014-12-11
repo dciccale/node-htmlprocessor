@@ -224,6 +224,7 @@ module.exports = {
 
     test.done();
   },
+
   template: function (test) {
     test.expect(1);
 
@@ -239,6 +240,21 @@ module.exports = {
     var actual = utils.read('test/fixtures/template/template.processed.html');
     var expected = utils.read('test/expected/template/template.html');
     test.equal(actual, expected, 'replace template data');
+
+    test.done();
+  },
+
+  inline: function (test) {
+    test.expect(1);
+
+    htmlprocessor({
+        src: ['test/fixtures/inline.html'],
+        dest: 'test/fixtures/inline/inline.processed.html'
+    });
+
+    var actual = utils.read('test/fixtures/inline/inline.processed.html');
+    var expected = utils.read('test/expected/inline/inline.html');
+    test.equal(actual, expected, 'should inline css and js for dist target');
 
     test.done();
   }
