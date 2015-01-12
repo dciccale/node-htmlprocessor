@@ -23,7 +23,7 @@ while (args.length > 0) {
   switch (v) {
     case '-d':
     case '--data':
-      options.data = require(path.join(__dirname, args.shift()));
+      options.data = require(path.resolve(args.shift()));
       break;
     case '-e':
     case '--env':

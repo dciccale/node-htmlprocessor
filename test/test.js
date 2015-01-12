@@ -223,5 +223,23 @@ module.exports = {
     test.equal(actual, expected, 'modify attributes');
 
     test.done();
+  },
+  template: function (test) {
+    test.expect(1);
+
+    htmlprocessor({
+      src: ['test/fixtures/template.html'],
+      dest: 'test/fixtures/template/template.processed.html'
+    }, {
+      data: {
+        msg: 'hey'
+      }
+    });
+
+    var actual = utils.read('test/fixtures/template/template.processed.html');
+    var expected = utils.read('test/expected/template/template.html');
+    test.equal(actual, expected, 'replace template data');
+
+    test.done();
   }
 };
