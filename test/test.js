@@ -1,13 +1,13 @@
 'use strict';
 
 var utils = require('../lib/utils');
-var index = require('../index');
+var htmlprocessor = require('../index');
 
 module.exports = {
   dev: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
         src: ['test/fixtures/index.html'],
         dest: 'test/fixtures/dev/index.processed.html'
       },
@@ -29,7 +29,7 @@ module.exports = {
   dist: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
         src: ['test/fixtures/index.html'],
         dest: 'test/fixtures/dist/index.processed.html'
       },
@@ -51,7 +51,7 @@ module.exports = {
   custom: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
         src: ['test/fixtures/custom.html'],
         dest: 'test/fixtures/custom/custom.processed.html'
       },
@@ -76,7 +76,7 @@ module.exports = {
   marker: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
         src: ['test/fixtures/custom.html'],
         dest: 'test/fixtures/custom/custom.processed.html'
       },
@@ -99,7 +99,7 @@ module.exports = {
   strip: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
         src: ['test/fixtures/strip.html'],
         dest: 'test/fixtures/strip/strip.processed.html'
       },
@@ -116,17 +116,17 @@ module.exports = {
   multiple: function (test) {
     test.expect(3);
 
-    index({
+    htmlprocessor({
       src: ['test/fixtures/multiple.html'],
       dest: 'test/fixtures/multiple/mult_one.html'
     });
 
-    index({
+    htmlprocessor({
       src: ['test/fixtures/multiple.html'],
       dest: 'test/fixtures/multiple/mult_two.html'
     });
 
-    index({
+    htmlprocessor({
       src: ['test/fixtures/multiple.html'],
       dest: 'test/fixtures/multiple/mult_three.html'
     });
@@ -149,7 +149,7 @@ module.exports = {
   include_js: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
       src: ['test/fixtures/include.html'],
       dest: 'test/fixtures/include/include.processed.html'
     });
@@ -164,7 +164,7 @@ module.exports = {
   conditional_ie: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
       src: ['test/fixtures/conditional_ie.html'],
       dest: 'test/fixtures/conditional_ie/conditional_ie.processed.html'
     });
@@ -179,7 +179,7 @@ module.exports = {
   recursive_process: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
       src: ['test/fixtures/recursive.html'],
       dest: 'test/fixtures/recursive/recursive.processed.html'
     }, {
@@ -196,7 +196,7 @@ module.exports = {
   custom_blocktype: function (test) {
     test.expect(1);
 
-    index({
+    htmlprocessor({
       src: ['test/fixtures/custom_blocktype.html'],
       dest: 'test/fixtures/custom_blocktype/custom_blocktype.processed.html'
     }, {
@@ -206,6 +206,21 @@ module.exports = {
     var actual = utils.read('test/fixtures/custom_blocktype/custom_blocktype.processed.html');
     var expected = utils.read('test/expected/custom_blocktype/custom_blocktype.html');
     test.equal(actual, expected, 'define custom block types');
+
+    test.done();
+  },
+
+  attr: function (test) {
+    test.expect(1);
+
+    htmlprocessor({
+      src: ['test/fixtures/attr.html'],
+      dest: 'test/fixtures/attr/attr.processed.html'
+    });
+
+    var actual = utils.read('test/fixtures/attr/attr.processed.html');
+    var expected = utils.read('test/expected/attr/attr.html');
+    test.equal(actual, expected, 'modify attributes');
 
     test.done();
   }
