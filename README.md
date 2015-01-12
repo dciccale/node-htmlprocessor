@@ -4,9 +4,7 @@
 
 ### Grunt task
 
-This module was originally merged into the [grunt-processhtml](http://github.com/dciccale/grunt-processhtml) task.
-
-Now its a standalone module without grunt dependency.
+This module is the processor behind [grunt-processhtml](http://github.com/dciccale/grunt-processhtml)
 
 For plenty of documentation please visit [grunt-processhtml](http://github.com/dciccale/grunt-processhtml)
 
