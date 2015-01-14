@@ -59,7 +59,17 @@ while (args.length > 0) {
       break;
     case '-h':
     case '--help':
-      console.log('show help');
+      console.log('Usage: htmlprocessor file-to-process.html [options]\n')
+      console.log('-h|--help             display this help message');
+      console.log('-v|--version          display the version number');
+      console.log('-o|--output           file to output processed HTML to');
+      console.log('-d|--data             pass a JSON file to processor');
+      console.log('-e|--env              specify an environment');
+      console.log('-r|--recursive        recursive processing');
+      console.log('-c|--comment-marker   change the comment marker');
+      console.log('-i|--include-base     set the directory to include files from');
+      console.log('-s|--strip            strip blocks matched by other environments');
+      console.log('--custom-block-type   specify custom block type');
       break;
     default:
       if (v && v.indexOf('-') === 0) {
