@@ -50,6 +50,12 @@ Change the comment marker to `<!-- process --><!-- /process -->`
 $ htmlprocessor file-to-process.html -o processed/file.html --comment-marker process
 ```
 
+## New option
+
+Create a list of files that were replaced and use that list to streamline the build process.
+
+Note: This new option does not affect in any way the previous existing functionality (i.e. it's backward compatible).
+
 ```bash
 $ htmlprocessor file-to-process.html -o processed/file.html --list wrk/replacement.list
 ```
@@ -151,7 +157,7 @@ If you processed more than a single "html" file, you can change the grep like th
 ... | grep 'other-file-to-process.html:.*\.js$' | ... > dist/js/myApplicationOther.js
 ```
 
-The file name is included in the list file for that very purpose.
+The originating file name is included in the list file for that very purpose.
 
 ## License
 See [LICENSE.txt](https://raw.github.com/dciccale/node-htmlprocessor/master/LICENSE-MIT)
