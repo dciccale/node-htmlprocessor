@@ -233,7 +233,8 @@ module.exports = {
       dest: 'test/fixtures/template/template.processed.html'
     }, {
       data: {
-        msg: 'hey'
+        msg: 'hey',
+        test: 'text_$&_text'
       }
     });
 
