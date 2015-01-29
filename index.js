@@ -12,7 +12,7 @@
 var path = require('path');
 var fs = require('fs');
 var HTMLProcessor = require('./lib/htmlprocessor');
-var utils = require('./lib/utils')
+var utils = require('./lib/utils');
 
 module.exports = function (files, options) {
 
@@ -47,11 +47,19 @@ module.exports = function (files, options) {
     }
   }
 
+  // create options.list directory if needed
+  if (options && options.list) {
+    utils.mkdir(path.dirname(options.list));
+  }
+
   files.src.forEach(function (filepath) {
     var content = html.process(filepath);
     var dest = getOutputPath(filepath);
 
     fs.writeFileSync(dest, content);
     console.log('File', '"' + dest + '"', 'created.');
+    if (options && options.list) {
+      console.log('File', '"' + options.list + '"', 'created.');
+    }
   });
 };
