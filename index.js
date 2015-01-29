@@ -48,7 +48,7 @@ module.exports = function (files, options) {
   }
 
   // create options.list directory if needed
-  if (options.list) {
+  if (options && options.list) {
     utils.mkdir(path.dirname(options.list));
   }
 
@@ -58,7 +58,7 @@ module.exports = function (files, options) {
 
     fs.writeFileSync(dest, content);
     console.log('File', '"' + dest + '"', 'created.');
-    if (options.list) {
+    if (options && options.list) {
       console.log('File', '"' + options.list + '"', 'created.');
     }
   });
