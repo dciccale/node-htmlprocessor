@@ -29,43 +29,43 @@ Usage: htmlprocessor file-to-process.html [options]
 ```
 
 Outputs version number
-```bash
+```sh
 $ htmlprocessor -v
 ```
 
 Outputs to `file-to-process.processed.html`.
 
-```bash
+```sh
 $ htmlprocessor file-to-process.html
 ```
 
 Outputs to `processed/file.html`.
 
-```bash
+```sh
 $ htmlprocessor file-to-process.html -o processed/file.html
 ```
 
 Pass some data
 
-```bash
+```sh
 $ htmlprocessor file-to-process.html -o processed/file.html -d data.json
 ```
 
 Specify an environment
 
-```bash
+```sh
 $ htmlprocessor file-to-process.html -o processed/file.html -e dev
 ```
 
 Allow recursive processing
 
-```bash
+```sh
 $ htmlprocessor file-to-process.html -o processed/file.html -r
 ```
 
 Change the comment marker to `<!-- process --><!-- /process -->`
 
-```bash
+```sh
 $ htmlprocessor file-to-process.html -o processed/file.html --comment-marker process
 ```
 
@@ -75,13 +75,13 @@ Create a list of files that were replaced and use that list to streamline the bu
 
 Note: This new option does not affect in any way the previous existing functionality (i.e. it's backward compatible).
 
-```bash
+```sh
 $ htmlprocessor file-to-process.html -o processed/file.html --list wrk/replacement.list
 ```
 
 Assumning you have this code in an HTML (or JSP)
 
-```bash
+```sh
         .
         .
         .
@@ -129,7 +129,7 @@ Assumning you have this code in an HTML (or JSP)
 
 The file "wrk/replacement.list" will contain something like this:
 
-```bash
+```sh
 file-to-process.html:js/bower_components/bootstrap/dist/css/bootstrap.css
 file-to-process.html:content/bootstrap-responsive.min.css
 file-to-process.html:js/bower_components/angular-date-range-picker/build/angular-date-range-picker.css
@@ -164,14 +164,14 @@ And you can use these commands to concatenate and eventually minify without havi
 it where it should pickup each files. Also, in this way it orders the global file content in the same manner
 as your individual includes originally were.
 
-```bash
-bash -c "cat `cat wrk/replacement.list | grep '\.js$' | cut -d: -f2` > dist/js/myApplication.js"
-bash -c "cat `cat wrk/replacement.list | grep '\.css$' | cut -d: -f2` > dist/css/myApplication.css"
+```sh
+sh -c "cat `cat wrk/replacement.list | grep '\.js$' | cut -d: -f2` > dist/js/myApplication.js"
+sh -c "cat `cat wrk/replacement.list | grep '\.css$' | cut -d: -f2` > dist/css/myApplication.css"
 ```
 
 If you processed more than a single "html" file, you can change the grep like this:
 
-```bash
+```sh
 ... | grep 'file-to-process.html:.*\.js$' | ... > dist/js/myApplication.js
 ... | grep 'other-file-to-process.html:.*\.js$' | ... > dist/js/myApplicationOther.js
 ```
