@@ -4,12 +4,31 @@
 
 ### Grunt task
 
-This module is the processor behind [grunt-processhtml](http://github.com/dciccale/grunt-processhtml)
+This module is the processor behind `grunt-processhtml`, `gulp-processhtml` and `gulp-htmlprocessor` tasks. For plenty of examples visit the [oficial documentation](https://github.com/dciccale/grunt-processhtml#readme).
 
 For plenty of documentation please visit [grunt-processhtml](http://github.com/dciccale/grunt-processhtml)
 
 ## CLI
 
+Outputs help
+```sh
+$ htmlprocessor -h
+Usage: htmlprocessor file-to-process.html [options]
+
+  -h, --help             display this help message
+  -v, --version          display the version number
+  -l, --list             file to output list of replaced files
+  -o, --output           file to output processed HTML to
+  -d, --data             pass a JSON file to processor
+  -e, --env              specify an environment
+  -r, --recursive        recursive processing
+  -c, --comment-marker   change the comment marker
+  -i, --include-base     set the directory to include files from
+  -s, --strip            strip blocks matched by other environments
+  --custom-block-type    specify custom block type
+```
+
+Outputs version number
 ```bash
 $ htmlprocessor -v
 ```
@@ -50,7 +69,7 @@ Change the comment marker to `<!-- process --><!-- /process -->`
 $ htmlprocessor file-to-process.html -o processed/file.html --comment-marker process
 ```
 
-## New option
+## List option
 
 Create a list of files that were replaced and use that list to streamline the build process.
 
