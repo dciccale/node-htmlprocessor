@@ -245,6 +245,38 @@ module.exports = {
     test.done();
   },
 
+  remove_no_newline: function (test) {
+    test.expect(1);
+
+    htmlprocessor({
+        src: ['test/fixtures/remove_no_newline.html'],
+        dest: 'test/fixtures/remove/remove_no_newline.processed.html',
+        environment: 'testa'
+    });
+
+    var actual = utils.read('test/fixtures/remove/remove_no_newline.processed.html');
+    var expected = utils.read('test/expected/remove/remove_no_newline.html');
+    test.equal(actual, expected, 'should remove block even if no starting new line is present');
+
+    test.done();
+  },
+
+  remove_with_newline: function (test) {
+    test.expect(1);
+
+    htmlprocessor({
+        src: ['test/fixtures/remove_with_newline.html'],
+        dest: 'test/fixtures/remove/remove_with_newline.processed.html',
+        environment: 'testa'
+    });
+
+    var actual = utils.read('test/fixtures/remove/remove_with_newline.processed.html');
+    var expected = utils.read('test/expected/remove/remove_with_newline.html');
+    test.equal(actual, expected, 'should remove block also when has a preceding newline');
+
+    test.done();
+  },
+
   inline: function (test) {
     test.expect(1);
 
