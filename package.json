@@ -1,7 +1,7 @@
 {
   "name": "htmlprocessor",
   "description": "Process html file using special comments",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "author": {
     "name": "Denis Ciccale",
     "email": "dciccale@gmail.com",
@@ -21,7 +21,7 @@
     }
   ],
   "scripts": {
-    "test": "node test/run.js"
+    "test": "./node_modules/.bin/nodeunit test/test.js"
   },
   "main": "./lib/htmlprocessor",
   "bin": {
@@ -40,6 +40,6 @@
     "lodash": "~2.4.1"
   },
   "devDependencies": {
-    "nodeunit": "~0.8.6"
+    "nodeunit": "^0.9.1"
   }
 }

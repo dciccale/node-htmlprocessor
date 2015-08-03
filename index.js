@@ -2,7 +2,7 @@
  * node-htmlprocessor
  * https://github.com/dciccale/node-htmlprocessor
  *
- * Copyright (c) 2013-2014 Denis Ciccale (@tdecs)
+ * Copyright (c) 2013-2015 Denis Ciccale (@tdecs)
  * Licensed under the MIT license.
  * https://github.com/dciccale/node-htmlprocessor/blob/master/LICENSE-MIT
  */
@@ -15,6 +15,7 @@ var HTMLProcessor = require('./lib/htmlprocessor');
 var utils = require('./lib/utils');
 
 module.exports = function (files, options) {
+  var html;
 
   if (options && options.customBlockTypes && options.customBlockTypes.length) {
     options.customBlockTypes = options.customBlockTypes.map(function (processor) {
@@ -22,9 +23,9 @@ module.exports = function (files, options) {
     });
   }
 
-  var html = new HTMLProcessor(options);
+  html = new HTMLProcessor(options);
 
-  var getOutputPath = function (filepath) {
+  function getOutputPath(filepath) {
     var dest = files.dest;
     var ext;
 
@@ -36,7 +37,7 @@ module.exports = function (files, options) {
     }
 
     return dest;
-  };
+  }
 
   // create output directory if needed
   if (files.dest) {
