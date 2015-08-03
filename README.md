@@ -4,9 +4,9 @@
 
 ### Grunt task
 
-This module is the processor behind `grunt-processhtml`, `gulp-processhtml` and `gulp-htmlprocessor` tasks. For plenty of examples visit the [oficial documentation](https://github.com/dciccale/grunt-processhtml#readme).
+This module is the processor behind `grunt-processhtml`, `gulp-processhtml` and `gulp-htmlprocessor` tasks.
 
-For plenty of documentation please visit [grunt-processhtml](http://github.com/dciccale/grunt-processhtml)
+For plenty of examples visit the [documentation](https://github.com/dciccale/grunt-processhtml#readme).
 
 ## CLI
 
