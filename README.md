@@ -6,11 +6,11 @@
 
 `npm install -g htmlprocessor`
 
-### Grunt task
+### Grunt/Gulp task
 
 This module is the processor behind `grunt-processhtml`, `gulp-processhtml` and `gulp-htmlprocessor` tasks.
 
-For plenty of examples visit the [documentation](https://github.com/dciccale/grunt-processhtml#readme).
+For plenty of examples visit the [grunt-processhtml documentation](https://github.com/dciccale/grunt-processhtml#readme).
 
 ## CLI
 
