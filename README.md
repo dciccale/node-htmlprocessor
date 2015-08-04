@@ -3,6 +3,8 @@
 [![NPM version](https://img.shields.io/npm/v/htmlprocessor.svg)](https://www.npmjs.com/package/htmlprocessor)
 [![Build status](https://travis-ci.org/dciccale/node-htmlprocessor.svg?branch=master)](https://travis-ci.org/dciccale/node-htmlprocessor)
 [![NPM downloads](https://img.shields.io/npm/dm/htmlprocessor.svg)](https://www.npmjs.com/package/htmlprocessor)
+[![Cove coverage](https://img.shields.io/coveralls/dciccale/node-htmlprocessor/0.2.0.svg)](https://coveralls.io/github/dciccale/node-htmlprocessor)
+
 
 `npm install -g htmlprocessor`
 
