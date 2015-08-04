@@ -77,8 +77,8 @@ module.exports = {
     test.expect(1);
 
     htmlprocessor({
-        src: ['test/fixtures/custom.html'],
-        dest: 'test/fixtures/custom/custom.processed.html'
+        src: ['test/fixtures/commentMarker.html'],
+        dest: 'test/fixtures/commentMarker/commentMarker.processed.html'
       },
       {
         data: {
@@ -118,17 +118,23 @@ module.exports = {
 
     htmlprocessor({
       src: ['test/fixtures/multiple.html'],
-      dest: 'test/fixtures/multiple/mult_one.html'
+      dest: 'test/fixtures/multiple/mult_one.processed.html'
+    }, {
+        environment: 'mult_one'
     });
 
     htmlprocessor({
       src: ['test/fixtures/multiple.html'],
-      dest: 'test/fixtures/multiple/mult_two.html'
+      dest: 'test/fixtures/multiple/mult_two.processed.html'
+    }, {
+        environment: 'mult_two'
     });
 
     htmlprocessor({
       src: ['test/fixtures/multiple.html'],
-      dest: 'test/fixtures/multiple/mult_three.html'
+      dest: 'test/fixtures/multiple/mult_three.processed.html'
+    }, {
+        environment: 'mult_three'
     });
 
     var actual = utils.read('test/fixtures/multiple/mult_one.processed.html');
@@ -250,7 +256,8 @@ module.exports = {
 
     htmlprocessor({
         src: ['test/fixtures/remove_no_newline.html'],
-        dest: 'test/fixtures/remove/remove_no_newline.processed.html',
+        dest: 'test/fixtures/remove/remove_no_newline.processed.html'
+    }, {
         environment: 'testa'
     });
 
@@ -266,7 +273,8 @@ module.exports = {
 
     htmlprocessor({
         src: ['test/fixtures/remove_with_newline.html'],
-        dest: 'test/fixtures/remove/remove_with_newline.processed.html',
+        dest: 'test/fixtures/remove/remove_with_newline.processed.html'
+    }, {
         environment: 'testa'
     });
 
