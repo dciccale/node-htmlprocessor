@@ -294,6 +294,23 @@ describe('remove_with_newline', function () {
   });
 });
 
+describe('remove_with_unescaped_regex_chars', function () {
+  it('should remove block also when the block contains unescaped regular expression special characters', function (done) {
+    htmlprocessor({
+        src: ['test/fixtures/remove_with_unescaped_regex_chars.html'],
+        dest: 'test/fixtures/remove/remove_with_unescaped_regex_chars.processed.html'
+    }, {
+        environment: 'testa'
+    });
+
+    var actual = utils.read('test/fixtures/remove/remove_with_unescaped_regex_chars.processed.html');
+    var expected = utils.read('test/expected/remove/remove_with_unescaped_regex_chars.html');
+    assert.equal(actual, expected);
+
+    done();
+  });
+});
+
 describe('inline', function () {
   it('should inline css and js for dist target', function (done) {
     htmlprocessor({
