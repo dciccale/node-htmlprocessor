@@ -23,22 +23,6 @@ module.exports = function (files, options) {
     });
   }
 
-  html = new HTMLProcessor(options);
-
-  function getOutputPath(filepath) {
-    var dest = files.dest;
-    var ext;
-
-    if (!dest) {
-      ext = path.extname(filepath);
-      dest = path.basename(filepath, ext) + '.processed' + ext;
-    } else if (!path.extname(dest)) {
-      dest = path.join(dest, filepath);
-    }
-
-    return dest;
-  }
-
   // create output directory if needed
   if (files.dest) {
     if (path.extname(files.dest)) {
@@ -53,14 +37,31 @@ module.exports = function (files, options) {
     utils.mkdir(path.dirname(options.list));
   }
 
+  html = new HTMLProcessor(options);
+
   files.src.forEach(function (filepath) {
     var content = html.process(filepath);
     var dest = getOutputPath(filepath);
 
     fs.writeFileSync(dest, content);
     console.log('File', '"' + dest + '"', 'created.');
+
     if (options && options.list) {
       console.log('File', '"' + options.list + '"', 'created.');
     }
   });
+
+  function getOutputPath(filepath) {
+    var dest = files.dest;
+    var ext;
+
+    if (!dest) {
+      ext = path.extname(filepath);
+      dest = path.basename(filepath, ext) + '.processed' + ext;
+    } else if (!path.extname(dest)) {
+      dest = path.join(dest, filepath);
+    }
+
+    return dest;
+  }
 };

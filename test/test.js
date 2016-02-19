@@ -7,16 +7,14 @@ var htmlprocessor = require('../index');
 describe('dev', function () {
   it('should process and output an html file as defined by the build special comments for dev target', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/index.html'],
-        dest: 'test/fixtures/dev/index.processed.html'
+      src: ['test/fixtures/index.html'],
+      dest: 'test/fixtures/dev/index.processed.html'
+    }, {
+      data: {
+        message: 'This is dev target'
       },
-      {
-        data: {
-          message: 'This is dev target'
-        },
-        environment: 'dev'
-      }
-    );
+      environment: 'dev'
+    });
 
     var actual = utils.read('test/fixtures/dev/index.processed.html');
     var expected = utils.read('test/expected/dev/index.html');
@@ -28,16 +26,14 @@ describe('dev', function () {
 describe('dist', function () {
   it('should process and output an html file as defined by the build special comments for dist target', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/index.html'],
-        dest: 'test/fixtures/dist/index.processed.html'
+      src: ['test/fixtures/index.html'],
+      dest: 'test/fixtures/dist/index.processed.html'
+    }, {
+      data: {
+        message: 'This is dist target'
       },
-      {
-        data: {
-          message: 'This is dist target'
-        },
-        environment: 'dist'
-      }
-    );
+      environment: 'dist'
+    });
 
     var actual = utils.read('test/fixtures/dist/index.processed.html');
     var expected = utils.read('test/expected/dist/index.html');
@@ -50,19 +46,17 @@ describe('dist', function () {
 describe('custom', function () {
   it('should be able to process a template with custom delimiters', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/custom.html'],
-        dest: 'test/fixtures/custom/custom.processed.html'
+      src: ['test/fixtures/custom.html'],
+      dest: 'test/fixtures/custom/custom.processed.html'
+    }, {
+      data: {
+        message: 'This has custom delimiters for the template'
       },
-      {
-        data: {
-          message: 'This has custom delimiters for the template'
-        },
-        environment: 'dist',
-        templateSettings: {
-          interpolate: /{{([\s\S]+?)}}/g
-        }
+      environment: 'dist',
+      templateSettings: {
+        interpolate: /{{([\s\S]+?)}}/g
       }
-    );
+    });
 
     var actual = utils.read('test/fixtures/custom/custom.processed.html');
     var expected = utils.read('test/expected/custom/custom.html');
@@ -76,17 +70,15 @@ describe('marker', function () {
 
   it('should process and output an html file as defined by the build special comments for marker target', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/commentMarker.html'],
-        dest: 'test/fixtures/commentMarker/commentMarker.processed.html'
+      src: ['test/fixtures/commentMarker.html'],
+      dest: 'test/fixtures/commentMarker/commentMarker.processed.html'
+    }, {
+      data: {
+        message: 'This uses a custom comment marker',
       },
-      {
-        data: {
-          message: 'This uses a custom comment marker',
-        },
-        commentMarker: 'process',
-        environment: 'marker'
-      }
-    );
+      commentMarker: 'process',
+      environment: 'marker'
+    });
 
     var actual = utils.read('test/fixtures/commentMarker/commentMarker.processed.html');
     var expected = utils.read('test/expected/commentMarker/commentMarker.html');
@@ -100,11 +92,11 @@ describe('strip', function () {
 
   it('should remove build comments for non-targets', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/strip.html'],
-        dest: 'test/fixtures/strip/strip.processed.html'
-      },
-      {strip: true}
-    );
+      src: ['test/fixtures/strip.html'],
+      dest: 'test/fixtures/strip/strip.processed.html'
+    }, {
+      strip: true
+    });
 
     var actual = utils.read('test/fixtures/strip/strip.processed.html');
     var expected = utils.read('test/expected/strip/strip.html');
@@ -263,10 +255,10 @@ describe('template', function () {
 describe('remove_no_newline', function () {
   it('should remove block even if no starting new line is present', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/remove_no_newline.html'],
-        dest: 'test/fixtures/remove/remove_no_newline.processed.html'
+      src: ['test/fixtures/remove_no_newline.html'],
+      dest: 'test/fixtures/remove/remove_no_newline.processed.html'
     }, {
-        environment: 'testa'
+      environment: 'testa'
     });
 
     var actual = utils.read('test/fixtures/remove/remove_no_newline.processed.html');
@@ -280,10 +272,10 @@ describe('remove_no_newline', function () {
 describe('remove_with_newline', function () {
   it('should remove block also when has a preceding newline', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/remove_with_newline.html'],
-        dest: 'test/fixtures/remove/remove_with_newline.processed.html'
+      src: ['test/fixtures/remove_with_newline.html'],
+      dest: 'test/fixtures/remove/remove_with_newline.processed.html'
     }, {
-        environment: 'testa'
+      environment: 'testa'
     });
 
     var actual = utils.read('test/fixtures/remove/remove_with_newline.processed.html');
@@ -297,10 +289,10 @@ describe('remove_with_newline', function () {
 describe('remove_with_unescaped_regex_chars', function () {
   it('should remove block also when the block contains unescaped regular expression special characters', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/remove_with_unescaped_regex_chars.html'],
-        dest: 'test/fixtures/remove/remove_with_unescaped_regex_chars.processed.html'
+      src: ['test/fixtures/remove_with_unescaped_regex_chars.html'],
+      dest: 'test/fixtures/remove/remove_with_unescaped_regex_chars.processed.html'
     }, {
-        environment: 'testa'
+      environment: 'testa'
     });
 
     var actual = utils.read('test/fixtures/remove/remove_with_unescaped_regex_chars.processed.html');
@@ -314,8 +306,8 @@ describe('remove_with_unescaped_regex_chars', function () {
 describe('inline', function () {
   it('should inline css and js for dist target', function (done) {
     htmlprocessor({
-        src: ['test/fixtures/inline.html'],
-        dest: 'test/fixtures/inline/inline.processed.html'
+      src: ['test/fixtures/inline.html'],
+      dest: 'test/fixtures/inline/inline.processed.html'
     });
 
     var actual = utils.read('test/fixtures/inline/inline.processed.html');
@@ -323,5 +315,27 @@ describe('inline', function () {
     assert.equal(actual, expected);
 
     done();
+  });
+});
+
+describe('list', function () {
+  it('should output a file with a list of replacements', function (done) {
+    htmlprocessor({
+      src: ['test/fixtures/list.html'],
+      dest: 'test/fixtures/list/list.processed.html'
+    }, {
+      list: 'test/fixtures/list/replacements.list'
+    });
+
+    // give some time for the stream to finish writing the replacements file
+    setTimeout(function () {
+      var actual = utils.read('test/fixtures/list/replacements.list');
+      var expected = utils.read('test/expected/list/replacements.list');
+
+      assert.equal(actual, expected);
+
+      done();
+    }, 50);
+
   });
 });
