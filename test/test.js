@@ -1,5 +1,6 @@
 'use strict';
 
+var fs = require('fs');
 var assert = require('assert');
 var utils = require('../lib/utils');
 var htmlprocessor = require('../index');
@@ -319,6 +320,10 @@ describe('inline', function () {
 });
 
 describe('list', function () {
+  after(function (done) {
+    fs.unlink('test/fixtures/list/replacements.list', done);
+  });
+
   it('should output a file with a list of replacements', function (done) {
     htmlprocessor({
       src: ['test/fixtures/list.html'],
