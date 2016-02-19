@@ -340,7 +340,7 @@ describe('list', function () {
       assert.equal(actual, expected);
 
       done();
-    }, 50);
+    }, 300);
 
   });
 });
