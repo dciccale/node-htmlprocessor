@@ -42,6 +42,41 @@ describe('dist', function () {
 
     done();
   });
+
+  it('should output the processed file to the specified directory', function (done) {
+    htmlprocessor({
+      src: ['test/fixtures/index.html'],
+      dest: 'test/fixtures/dist'
+    }, {
+      data: {
+        message: 'This is dist target'
+      },
+      environment: 'dist'
+    });
+
+    var actual = utils.read('test/fixtures/dist/index.html');
+    var expected = utils.read('test/expected/dist/index.html');
+    assert.equal(actual, expected);
+
+    done();
+  });
+
+  it('should output the processed file to same directory if no dest specified', function (done) {
+    htmlprocessor({
+      src: ['test/fixtures/index.html']
+    }, {
+      data: {
+        message: 'This is dist target'
+      },
+      environment: 'dist'
+    });
+
+    var actual = utils.read('test/fixtures/dist/index.html');
+    var expected = utils.read('test/fixtures/dist/index.processed.html');
+    assert.equal(actual, expected);
+
+    done();
+  });
 });
 
 describe('custom', function () {
@@ -163,6 +198,19 @@ describe('include_js', function () {
 
     var actual = utils.read('test/fixtures/include/include.processed.html');
     var expected = utils.read('test/expected/include/include.html');
+    assert.equal(actual, expected);
+
+    done();
+  });
+
+  it('should only include a file if the file exists', function (done) {
+    htmlprocessor({
+      src: ['test/fixtures/include_no_exist.html'],
+      dest: 'test/fixtures/include/include_no_exist.processed.html'
+    });
+
+    var actual = utils.read('test/fixtures/include/include_no_exist.processed.html');
+    var expected = utils.read('test/expected/include/include_no_exist.html');
     assert.equal(actual, expected);
 
     done();
@@ -304,6 +352,21 @@ describe('remove_with_unescaped_regex_chars', function () {
   });
 });
 
+describe('remove_mixed_eol', function () {
+  it('should remove block also when the block contains mixed EOL', function (done) {
+    htmlprocessor({
+      src: ['test/fixtures/remove_mixed_eol.html'],
+      dest: 'test/fixtures/remove/remove_mixed_eol.processed.html'
+    });
+
+    var actual = utils.read('test/fixtures/remove/remove_mixed_eol.processed.html');
+    var expected = utils.read('test/expected/remove/remove_mixed_eol.html');
+    assert.equal(actual, expected);
+
+    done();
+  });
+});
+
 describe('inline', function () {
   it('should inline css and js for dist target', function (done) {
     htmlprocessor({
@@ -320,27 +383,25 @@ describe('inline', function () {
 });
 
 describe('list', function () {
-  after(function (done) {
+  beforeEach(function (done) {
     fs.unlink('test/fixtures/list/replacements.list', done);
   });
 
   it('should output a file with a list of replacements', function (done) {
-    htmlprocessor({
+    var processor = htmlprocessor({
       src: ['test/fixtures/list.html'],
       dest: 'test/fixtures/list/list.processed.html'
     }, {
       list: 'test/fixtures/list/replacements.list'
     });
 
-    // give some time for the stream to finish writing the replacements file
-    setTimeout(function () {
+    processor.parser.listFile.on('finish', function () {
       var actual = utils.read('test/fixtures/list/replacements.list');
       var expected = utils.read('test/expected/list/replacements.list');
 
       assert.equal(actual, expected);
 
       done();
-    }, 300);
-
+    });
   });
 });
