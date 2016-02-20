@@ -1,0 +1,10 @@
+test/fixtures/list.html:js/bower_components/bootstrap/dist/css/bootstrap.css
+test/fixtures/list.html:content/bootstrap-responsive.min.css
+test/fixtures/list.html:content/styles.css
+test/fixtures/list.html:content/myApplicationStyles.css
+test/fixtures/list.html:js/bower_components/jquery/dist/jquery.js
+test/fixtures/list.html:js/bower_components/angular/angular.js
+test/fixtures/list.html:js/bower_components/angular-route/angular-route.js
+test/fixtures/list.html:app/app.js
+test/fixtures/list.html:app/filters/filters.js
+test/fixtures/list.html:app/controllers/applications.js

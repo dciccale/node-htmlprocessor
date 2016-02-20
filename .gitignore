@@ -1,5 +1,6 @@
+.DS_Store
 node_modules
 *.processed.html
-*.list
+test/fixtures/list/*.list
 coverage
 *.log
