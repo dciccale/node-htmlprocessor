@@ -10,9 +10,9 @@
 
 ### Grunt/Gulp task
 
-This module is the processor behind `grunt-processhtml`, `gulp-processhtml` and `gulp-htmlprocessor` tasks.
+This module is the processor behind [grunt-processhtml](https://www.npmjs.com/package/grunt-processhtml), [gulp-processhtml](https://www.npmjs.com/package/gulp-processhtml) tasks.
 
-For plenty of examples visit the [grunt-processhtml documentation](https://github.com/dciccale/grunt-processhtml#readme).
+For plenty of examples visit the [documentation](https://github.com/dciccale/grunt-processhtml#readme).
 
 ## CLI
 
