@@ -56,7 +56,7 @@ module.exports = function (files, options) {
     var ext;
 
     if (!dest) {
-      dest = getFileName(filePath, 'processed');
+      dest = getFileName(filePath, '.processed');
     } else if (!path.extname(dest)) {
       dest = path.join(dest, getFileName(filePath));
     }
