@@ -383,7 +383,7 @@ describe('inline', function () {
 });
 
 describe('list', function () {
-  beforeEach(function (done) {
+  afterEach(function (done) {
     fs.unlink('test/fixtures/list/replacements.list', done);
   });
 
