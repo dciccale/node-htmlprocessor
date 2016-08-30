@@ -382,6 +382,21 @@ describe('inline', function () {
   });
 });
 
+describe('inline scope', function () {
+  it('should inline css with scope attribute', function (done) {
+    htmlprocessor({
+      src: ['test/fixtures/inline-scoped.html'],
+      dest: 'test/fixtures/inline/inline-scoped.processed.html'
+    });
+
+    var actual = utils.read('test/fixtures/inline/inline-scoped.processed.html');
+    var expected = utils.read('test/expected/inline/inline-scoped.html');
+    assert.equal(actual, expected);
+
+    done();
+  });
+});
+
 describe('list', function () {
   afterEach(function (done) {
     fs.unlink('test/fixtures/list/replacements.list', done);
