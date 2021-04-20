@@ -420,3 +420,19 @@ describe('list', function () {
     });
   });
 });
+
+describe('lodash template', function() {
+  it ('should offer a lodash 2.4 compatible template function in prototype', function() {
+    var text = 'hello {{ name }}!';
+    var data = { 'name': 'mustache' };
+    var options = { 'interpolate': /{{([\s\S]+?)}}/g };
+    var processorInstance = htmlprocessor({
+        src: []
+    });
+    var actual = processorInstance.template(text, data, options);
+    // var actual = utils._.template(text, options)(data);
+    var expected = 'hello mustache!';
+
+    assert.equal(actual, expected);
+  })
+});
