@@ -2,5 +2,6 @@
 node_modules
 *.processed.html
 test/fixtures/list/*.list
+test/fixtures/dist
 coverage
 *.log
