@@ -1,11 +1,11 @@
 {
   "name": "htmlprocessor",
   "description": "Process html file using special comments",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": {
     "name": "Denis Ciccale",
     "email": "dciccale@gmail.com",
-    "url": "http://twitter.com/tdecs"
+    "url": "http://twitter.com/dciccale"
   },
   "repository": {
     "type": "git",

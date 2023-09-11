@@ -2,7 +2,7 @@
  * node-htmlprocessor
  * https://github.com/dciccale/node-htmlprocessor
  *
- * Copyright (c) 2013-2016 Denis Ciccale (@dciccale)
+ * Copyright (c) 2013-2023 Denis Ciccale (@dciccale)
  * Licensed under the MIT license.
  * https://github.com/dciccale/node-htmlprocessor/blob/master/LICENSE-MIT
  */
@@ -18,7 +18,9 @@ module.exports = function (files, options) {
   var html;
 
   if (options && options.customBlockTypes && options.customBlockTypes.length) {
-    options.customBlockTypes = options.customBlockTypes.map(function (processor) {
+    options.customBlockTypes = options.customBlockTypes.map(function (
+      processor
+    ) {
       return path.resolve(processor);
     });
   }
