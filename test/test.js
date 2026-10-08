@@ -71,8 +71,8 @@ describe('dist', function () {
       environment: 'dist'
     });
 
-    var actual = utils.read('test/fixtures/dist/index.html');
-    var expected = utils.read('test/fixtures/dist/index.processed.html');
+    var actual = utils.read('index.processed.html');
+    var expected = utils.read('test/expected/dist/index.html');
     assert.equal(actual, expected);
 
     done();

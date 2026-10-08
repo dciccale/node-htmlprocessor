@@ -5,3 +5,5 @@ test/fixtures/list/*.list
 test/fixtures/dist
 coverage
 *.log
+
+.nyc_output

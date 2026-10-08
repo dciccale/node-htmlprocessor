@@ -148,5 +148,25 @@ If you processed more than a single "html" file, you can change the grep like th
 
 The originating file name is included in the list file for that very purpose.
 
+## Development
+
+Use Node.js 20.19 or later in the Node.js 20 series, or Node.js 22.12 or later.
+Mocha and NYC require these versions to run the tests and measure coverage.
+
+```sh
+npm ci
+npm test
+npm run coverage
+```
+
+Coverage includes the library, file writer, and command-line tool.
+The coverage check requires 95% of statements, lines, and functions, and 90% of branches.
+The reports are in `coverage/`, including `lcov.info` for Coveralls.
+
+The package still exports the CommonJS `HTMLProcessor` constructor.
+The `process`, `processContent`, `template`, and `registerBlockType` methods remain available.
+`grunt-processhtml` uses this constructor and these methods.
+The `grunt-processhtml` 0.4.5 release pins `htmlprocessor` to `0.3.4`.
+
 ## License
 See [LICENSE.txt](https://raw.github.com/dciccale/node-htmlprocessor/master/LICENSE-MIT)

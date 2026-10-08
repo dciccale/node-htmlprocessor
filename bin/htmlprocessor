@@ -43,7 +43,7 @@ while (args.length > 0) {
       break;
     case '-r':
     case '--recursive':
-      options.recursive = args.shift();
+      options.recursive = true;
       break;
     case '-s':
     case '--strip':
@@ -53,7 +53,6 @@ while (args.length > 0) {
     case '--version':
       console.log(pkg.version);
       process.exit(0);
-      break;
     case '-o':
     case '--output':
       output = args.shift();
