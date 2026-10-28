@@ -162,6 +162,8 @@ npm run coverage
 Coverage includes the library, file writer, and command-line tool.
 The coverage check requires 95% of statements, lines, and functions, and 90% of branches.
 The reports are in `coverage/`, including `lcov.info` for Coveralls.
+`npm run coveralls` sends the report with `coveralls-next`.
+The uploader uses the native Node.js HTTP APIs instead of `request`.
 
 The package still exports the CommonJS `HTMLProcessor` constructor.
 The `process`, `processContent`, `template`, and `registerBlockType` methods remain available.
